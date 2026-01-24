@@ -1,0 +1,35 @@
+.grid-bg {
+  position: fixed;
+  background-image: radial-gradient(circle, #73737350 1px, transparent 1px);
+  background-size: 15px 15px;
+  background-position: 0 0;
+  mask-image: radial-gradient(
+    ellipse 50% 55% at 50% 50%,
+    #000 20%,
+    transparent 100%
+  );
+  animation:
+    grid-drift 40s linear infinite,
+    mask-float 12s ease-in-out infinite;
+}
+
+@keyframes grid-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 200px 200px;
+  }
+}
+
+@keyframes mask-float {
+  0% {
+    mask-position: 50% 50%;
+  }
+  50% {
+    mask-position: 52% 48%;
+  }
+  100% {
+    mask-position: 50% 50%;
+  }
+}
