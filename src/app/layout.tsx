@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   description:
     "Explore the latest blockbusters, track your favorite films, and discover hidden gems.",
-  keywords: ["Movies", "Cinema", "Next.js", "HeroUI", "Watchlist", "Streaming"],
+  keywords: ["Movies", "Cinema", "Next.js", "Watchlist", "Streaming"],
   authors: [{ name: "lukadevv", url: "https://lukadevv.com" }],
   creator: "lukadevv",
 };
