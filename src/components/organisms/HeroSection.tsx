@@ -48,7 +48,7 @@ export function HeroSection({
         <CardFooter>
           <div className="flex gap-4 max-w-[450px] h-full items-end">
             <Button className="w-full text-lg" color="primary">
-              Watch
+              View
             </Button>
           </div>
         </CardFooter>

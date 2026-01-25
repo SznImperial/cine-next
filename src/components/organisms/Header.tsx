@@ -92,7 +92,7 @@ export function Header() {
           Movies
         </HeroLink>
         <HeroLink
-          href="/tv"
+          href="/tvshows"
           className="text-sm text-default-600 hover:text-primary"
         >
           TV Shows

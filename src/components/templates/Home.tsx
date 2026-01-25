@@ -32,7 +32,7 @@ export function Home({
   categories: Genres;
 }) {
   return (
-    <main className="max-w-312.5 w-full m-auto py-4 p-1">
+    <main>
       <HeroSection data={trending.results[0]} genres={categories} />
       <div className="flex flex-col mt-6 gap-4">
         <CarouselAll title="Trending" data={trending.results} />

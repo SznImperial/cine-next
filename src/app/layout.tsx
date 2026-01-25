@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "CineNext — The Ultimate Movie Discovery Platform",
+    default: "CineNext - The Ultimate Movie Discovery Platform",
     template: "%s - CineNext",
   },
   description:

@@ -9,26 +9,31 @@ export function Poster({
   children,
 }: {
   title: string;
-  imageSrc: string;
+  imageSrc?: string | null;
   children?: React.ReactNode;
 }) {
-  const imageUrl = getFullImagePath(
-    TMDB_IMAGE_BASE_URL,
-    PosterSize.W185,
-    imageSrc,
-  );
+  const imageUrl = imageSrc
+    ? getFullImagePath(TMDB_IMAGE_BASE_URL, PosterSize.W185, imageSrc)
+    : null;
 
   return (
-    <div className="w-full h-55 m-auto">
-      <Image
-        title={title}
-        src={imageUrl}
-        alt={"Movie Iamge"}
-        loading="lazy"
-        width={154}
-        height={138}
-        className="object-fill h-full rounded-lg border-2 border-white/30 cursor-pointer transition-all hover:scale-98"
-      />
+    <div className="h-55 m-auto">
+      {imageUrl ? (
+        <Image
+          title={title}
+          src={imageUrl}
+          alt={"Movie Iamge"}
+          loading="lazy"
+          width={154}
+          height={138}
+          className="object-fill h-full rounded-lg border-2 border-white/30 cursor-pointer transition-all hover:scale-98"
+        />
+      ) : (
+        <div
+          title={title}
+          className="w-[154px] h-[138px] bg-gray-400/40 object-fill h-full rounded-lg border-2 border-white/30 cursor-pointer transition-all hover:scale-98"
+        />
+      )}
       {children && <div>{children}</div>}
     </div>
   );
