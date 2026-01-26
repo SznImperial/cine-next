@@ -48,7 +48,7 @@ export function Search({
               </h2>
             </CardHeader>
             <Divider />
-            <CardBody className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4">
+            <CardBody className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4 max-[400px]:gap-1">
               {result.results.map((each) => (
                 <div key={each.id}>
                   <Poster

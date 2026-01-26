@@ -70,7 +70,7 @@ export function HeroSection({
             </h2>
           </div>
         </CardHeader>
-        <CardBody className="max-w-[550px] mt-4">
+        <CardBody className="max-w-[550px] mt-4 max-[500px]:h-[150px]">
           <p className="bg-black/50 p-3 rounded-2xl">
             {data.media_type === "movie" ? data.overview : data.original_name}
           </p>
@@ -96,13 +96,14 @@ export function HeroSection({
           </div>
         </CardFooter>
       </Card>
-      <section className="mt-5 flex gap-2 flex-wrap">
+      <section className="mt-5 flex gap-2 flex-wrap max-h-[150px] overflow-y-auto">
         {genres.genres.map((each) => (
           <Button
             key={each.id}
             as={Link}
             href={`/movies?with_genres=${each.id}`}
             color="default"
+            className="border-1"
           >
             {each.name}
           </Button>

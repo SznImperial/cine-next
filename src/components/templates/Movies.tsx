@@ -35,12 +35,12 @@ export function Movies({
     <main>
       <form method="GET">
         <input type="hidden" name="page" value="1" />
-        <section className="flex gap-2 flex-wrap">
+        <section className="flex gap-2 flex-wrap max-h-[140px] overflow-y-auto">
           {categories.genres.map((each) => (
             <Button
               key={each.id}
               color="default"
-              className="border-1 bg-red-950 border-white/20 disabled:bg-black/50 disabled:cursor-not-allowed disabled:opacity-50"
+              className="border-1 disabled:bg-black/50 disabled:cursor-not-allowed disabled:opacity-50"
               name="with_genres"
               type="submit"
               value={String(each.id)}
@@ -63,7 +63,7 @@ export function Movies({
               </h2>
             </CardHeader>
             <Divider />
-            <CardBody className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4">
+            <CardBody className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4 max-[400px]:gap-1">
               {result.results.map((each) => (
                 <div key={each.id}>
                   <Poster

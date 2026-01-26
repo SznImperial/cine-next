@@ -10,9 +10,10 @@ import {
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 import { isMovie, isTV } from "@/libs/tmdb/utils";
 import homeBackground from "../../../assets/hero_background.webp";
+import Slider from "react-slick";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 export function CarouselAll({
   title,
@@ -21,9 +22,43 @@ export function CarouselAll({
   title: string;
   data: (TVWithMediaType | MovieWithMediaType | PersonWithMediaType)[];
 }) {
+  const width = useWindowSize();
+
+  const slidesToShow = (() => {
+    if (width > 1120) {
+      return 6;
+    }
+
+    if (width > 969) {
+      return 5;
+    }
+
+    if (width > 821) {
+      return 4;
+    }
+
+    if (width > 650) {
+      return 3;
+    }
+
+    if (width > 500) {
+      return 2;
+    }
+
+    if (width > 410) {
+      return 1.5;
+    }
+
+    if (width > 330) {
+      return 1;
+    }
+
+    return 0.75;
+  })();
+
   return (
     <Card
-      className="container bg-white/10"
+      className="bg-white/10"
       style={{
         background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${homeBackground.src})`,
         backgroundAttachment: "fixed",
@@ -41,7 +76,7 @@ export function CarouselAll({
           dots
           infinite
           speed={500}
-          slidesToShow={6}
+          slidesToShow={slidesToShow}
           swipeToSlide
         >
           {data.map((each) => (

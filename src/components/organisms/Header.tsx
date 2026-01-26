@@ -35,7 +35,7 @@ export function Header() {
         </NavbarBrand>
 
         <NavbarContent className="flex-1 px-4">
-          <NavbarItem className="w-[750px]">
+          <NavbarItem className="w-[750px] max-[1000px]:w-[550px] max-[700px]:w-[450px] max-[600px]:w-[350px] max-[490px]:w-[250px] max-[390px]:w-[150px] max-[280px]:w-[100px]">
             <form action={"/search"} method="GET">
               <Input
                 classNames={{
@@ -58,7 +58,7 @@ export function Header() {
             </form>
           </NavbarItem>
         </NavbarContent>
-        <NavbarContent as="div" justify="end" />
+        <NavbarContent as="div" className="max-[800px]:hidden" justify="end" />
       </Navbar>
 
       <div className="flex gap-6 px-6 py-1.5 border-t border-default-200 justify-center border-b bg-black/40">

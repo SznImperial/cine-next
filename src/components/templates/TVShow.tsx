@@ -24,7 +24,7 @@ export function TVShow({ result }: TvShowProps) {
           size="large"
         />
         <div className="relative h-96 from-blue-500 to-purple-600">
-          {result.backdrop_path && (
+          {result.backdrop_path ? (
             <Image
               src={`https://image.tmdb.org/t/p/w1280${result.backdrop_path}`}
               alt={result.name}
@@ -32,8 +32,16 @@ export function TVShow({ result }: TvShowProps) {
               width={1280}
               height={680}
             />
+          ) : (
+            <Image
+              src={`https://image.tmdb.org/t/p/w1280${result.poster_path}`}
+              alt={result.name}
+              className="absolute inset-0 w-full h-full object-cover opacity-50"
+              width={1280}
+              height={680}
+            />
           )}
-          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-end">
+          <div className="absolute inset-0 bg-opacity-40 flex items-end">
             <div className="p-8 text-white">
               <h1 className="text-4xl font-bold mb-2">{result.name}</h1>
               {result.tagline && (
