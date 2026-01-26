@@ -36,8 +36,16 @@ export function Home({
       <HeroSection data={trending.results[0]} genres={categories} />
       <div className="flex flex-col mt-6 gap-4">
         <CarouselAll title="Trending" data={trending.results} />
-        <Carousel title="Trending Movies" data={trendingMoviesData} />
-        <Carousel title="Trending TV Shows" data={trendingTvShowsData} />
+        <Carousel
+          title="Trending Movies"
+          data={trendingMoviesData}
+          withBackground
+        />
+        <Carousel
+          title="Trending TV Shows"
+          data={trendingTvShowsData}
+          withBackground
+        />
         <Carousel title="Hidden Gems" data={hiddenGemsData} />
         <Carousel title="Anime World" data={animeWorldData} />
         <Carousel title="Binge-Worthy TV" data={bingeTvData} />

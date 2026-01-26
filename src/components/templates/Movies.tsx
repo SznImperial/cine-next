@@ -65,7 +65,11 @@ export function Movies({
             <CardBody className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4">
               {result.results.map((each) => (
                 <div key={each.id}>
-                  <Poster title={each.title} imageSrc={each.poster_path} />
+                  <Poster
+                    href={`/movies/${each.id}`}
+                    title={each.title}
+                    imageSrc={each.poster_path}
+                  />
                 </div>
               ))}
             </CardBody>

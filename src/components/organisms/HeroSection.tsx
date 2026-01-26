@@ -2,6 +2,8 @@ import { Button, Card, CardBody, CardFooter, CardHeader } from "@heroui/react";
 import { getFullImagePath, PosterSize, TrendingResults } from "tmdb-ts";
 import { TMDB_IMAGE_BASE_URL } from "../molecules/Poster";
 import { Genres } from "tmdb-ts/dist/endpoints";
+import Link from "next/link";
+import { isMovie, isPerson, isTV } from "@/libs/tmdb/utils";
 
 export function HeroSection({
   data,
@@ -34,10 +36,10 @@ export function HeroSection({
       >
         <CardHeader>
           <div>
-            <h1 className="text-6xl font-bold">
+            <h1 className="text-6xl font-bold [text-shadow:0_2px_4px_rgba(0,0,0,0.8)]">
               {data.media_type === "movie" ? data.title : data.name}
             </h1>
-            <h2 className="text-2xl pt-4">#1 Trending</h2>
+            <h2 className="text-2xl pt-4 [text-shadow:0_2px_4px_rgba(0,0,0,0.8)]">#1 Trending</h2>
           </div>
         </CardHeader>
         <CardBody className="max-w-[550px] mt-4">
@@ -47,7 +49,20 @@ export function HeroSection({
         </CardBody>
         <CardFooter>
           <div className="flex gap-4 max-w-[450px] h-full items-end">
-            <Button className="w-full text-lg" color="primary">
+            <Button
+              as={Link}
+              href={
+                isMovie(data)
+                  ? `/movies/${data.id}`
+                  : isTV(data)
+                    ? `/tvshows/${data.id}`
+                    : isPerson(data)
+                      ? `/people/${data.id}`
+                      : "#"
+              }
+              className="w-full text-lg"
+              color="primary"
+            >
               View
             </Button>
           </div>
@@ -55,7 +70,14 @@ export function HeroSection({
       </Card>
       <section className="mt-5 flex gap-2 flex-wrap">
         {genres.genres.map((each) => (
-          <Button key={each.id} color="default" className="border-1 bg-red-950 border-white/20">{each.name}</Button>
+          <Button
+            key={each.id}
+            as={Link}
+            href={`/movies?with_genres=${each.id}`}
+            color="default"
+          >
+            {each.name}
+          </Button>
         ))}
       </section>
     </>

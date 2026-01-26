@@ -13,6 +13,7 @@ import { useSearchParams } from "next/navigation";
 import { MultiSearchResult, Search as SearchType } from "tmdb-ts";
 import { Poster } from "../molecules/Poster";
 import Link from "next/link";
+import { isMovie, isPerson, isTV } from "@/libs/tmdb/utils";
 
 export function Search({
   result,
@@ -51,6 +52,15 @@ export function Search({
               {result.results.map((each) => (
                 <div key={each.id}>
                   <Poster
+                    href={
+                      isMovie(each)
+                        ? `/movies/${each.id}`
+                        : isTV(each)
+                          ? `/tvshows/${each.id}`
+                          : isPerson(each)
+                            ? `/people/${each.id}`
+                            : "#"
+                    }
                     title={
                       each.media_type === "movie"
                         ? each.title

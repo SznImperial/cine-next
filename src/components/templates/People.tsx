@@ -42,7 +42,11 @@ export function People({ result }: { result: PopularPeople }) {
             <CardBody className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4">
               {result.results.map((each) => (
                 <div key={each.id}>
-                  <Poster title={each.name} imageSrc={each.profile_path} />
+                  <Poster
+                    href={`/people/${each.id}`}
+                    title={each.name}
+                    imageSrc={each.profile_path}
+                  />
                 </div>
               ))}
             </CardBody>

@@ -65,7 +65,11 @@ export function TvShows({
             <CardBody className="grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4">
               {result.results.map((each) => (
                 <div key={each.id}>
-                  <Poster title={each.name} imageSrc={each.poster_path} />
+                  <Poster
+                    href={`/tvshows/${each.id}`}
+                    title={each.name}
+                    imageSrc={each.poster_path}
+                  />
                 </div>
               ))}
             </CardBody>

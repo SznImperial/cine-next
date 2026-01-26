@@ -1,13 +1,16 @@
 import Image from "next/image";
+import Link from "next/link";
 import { getFullImagePath, PosterSize } from "tmdb-ts";
 
 export const TMDB_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/";
 
 export function Poster({
+  href,
   title,
   imageSrc,
   children,
 }: {
+  href: string;
   title: string;
   imageSrc?: string | null;
   children?: React.ReactNode;
@@ -17,7 +20,7 @@ export function Poster({
     : null;
 
   return (
-    <div className="h-55 m-auto">
+    <Link href={href} className="block w-[154px] h-[229px] m-auto">
       {imageUrl ? (
         <Image
           title={title}
@@ -31,10 +34,10 @@ export function Poster({
       ) : (
         <div
           title={title}
-          className="w-[154px] h-[138px] bg-gray-400/40 object-fill h-full rounded-lg border-2 border-white/30 cursor-pointer transition-all hover:scale-98"
+          className="w-[154px] h-[229px] bg-gray-400/40 object-fill h-full rounded-lg border-2 border-white/30 cursor-pointer transition-all hover:scale-98"
         />
       )}
       {children && <div>{children}</div>}
-    </div>
+    </Link>
   );
 }
