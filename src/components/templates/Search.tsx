@@ -52,28 +52,27 @@ export function Search({
               {result.results.map((each) => (
                 <div key={each.id}>
                   <Poster
-                    href={
+                    data={
                       isMovie(each)
-                        ? `/movies/${each.id}`
+                        ? {
+                            type: "movie",
+                            id: each.id,
+                            title: each.title,
+                            poster_path: each.poster_path,
+                          }
                         : isTV(each)
-                          ? `/tvshows/${each.id}`
-                          : isPerson(each)
-                            ? `/people/${each.id}`
-                            : "#"
-                    }
-                    title={
-                      each.media_type === "movie"
-                        ? each.title
-                        : each.media_type === "tv"
-                          ? each.name
-                          : each.name
-                    }
-                    imageSrc={
-                      each.media_type === "movie"
-                        ? each.poster_path
-                        : each.media_type === "tv"
-                          ? each.poster_path
-                          : each.profile_path
+                          ? {
+                              type: "tvshow",
+                              id: each.id,
+                              name: each.name,
+                              poster_path: each.poster_path,
+                            }
+                          : {
+                              type: "people",
+                              id: each.id,
+                              name: each.name,
+                              profile_path: each.profile_path,
+                            }
                     }
                   />
                 </div>

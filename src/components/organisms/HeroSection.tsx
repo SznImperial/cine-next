@@ -4,6 +4,7 @@ import { TMDB_IMAGE_BASE_URL } from "../molecules/Poster";
 import { Genres } from "tmdb-ts/dist/endpoints";
 import Link from "next/link";
 import { isMovie, isPerson, isTV } from "@/libs/tmdb/utils";
+import { FavoriteButtonAbsolute } from "../molecules/FavoriteButton";
 
 export function HeroSection({
   data,
@@ -34,12 +35,39 @@ export function HeroSection({
           backgroundPosition: "center",
         }}
       >
+        <FavoriteButtonAbsolute
+          data={
+            isMovie(data)
+              ? {
+                  type: "movie",
+                  id: data.id,
+                  title: data.title,
+                  poster_path: data.poster_path,
+                }
+              : isTV(data)
+                ? {
+                    type: "tvshow",
+                    id: data.id,
+                    name: data.name,
+                    poster_path: data.poster_path,
+                  }
+                : {
+                    type: "people",
+                    id: data.id,
+                    name: data.name,
+                    profile_path: data.profile_path,
+                  }
+          }
+          size="large"
+        />
         <CardHeader>
           <div>
             <h1 className="text-6xl font-bold [text-shadow:0_2px_4px_rgba(0,0,0,0.8)]">
               {data.media_type === "movie" ? data.title : data.name}
             </h1>
-            <h2 className="text-2xl pt-4 [text-shadow:0_2px_4px_rgba(0,0,0,0.8)]">#1 Trending</h2>
+            <h2 className="text-2xl pt-4 [text-shadow:0_2px_4px_rgba(0,0,0,0.8)]">
+              #1 Trending
+            </h2>
           </div>
         </CardHeader>
         <CardBody className="max-w-[550px] mt-4">

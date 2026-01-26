@@ -66,9 +66,12 @@ export function TvShows({
               {result.results.map((each) => (
                 <div key={each.id}>
                   <Poster
-                    href={`/tvshows/${each.id}`}
-                    title={each.name}
-                    imageSrc={each.poster_path}
+                    data={{
+                      type: "tvshow",
+                      id: each.id,
+                      name: each.name,
+                      poster_path: each.poster_path,
+                    }}
                   />
                 </div>
               ))}

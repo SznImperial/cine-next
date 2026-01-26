@@ -4,6 +4,7 @@ import { Button, Card } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { MovieDetails } from "tmdb-ts";
+import { FavoriteButtonAbsolute } from "../molecules/FavoriteButton";
 
 interface MovieProps {
   result: MovieDetails;
@@ -13,6 +14,15 @@ export function Movie({ result }: MovieProps) {
   return (
     <main>
       <Card className="mx-auto overflow-hidden">
+        <FavoriteButtonAbsolute
+          data={{
+            type: "movie",
+            id: result.id,
+            poster_path: result.poster_path as string,
+            title: result.title,
+          }}
+          size="large"
+        />
         <div className="relative h-96 from-blue-500 to-purple-600">
           {result.backdrop_path && (
             <Image

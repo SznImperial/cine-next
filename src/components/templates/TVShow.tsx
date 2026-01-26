@@ -4,6 +4,7 @@ import { Button, Card } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { TvShowDetails } from "tmdb-ts";
+import { FavoriteButtonAbsolute } from "../molecules/FavoriteButton";
 
 interface TvShowProps {
   result: TvShowDetails;
@@ -13,6 +14,15 @@ export function TVShow({ result }: TvShowProps) {
   return (
     <main>
       <Card className="mx-auto overflow-hidden">
+        <FavoriteButtonAbsolute
+          data={{
+            type: "tvshow",
+            id: result.id,
+            poster_path: result.poster_path,
+            name: result.name,
+          }}
+          size="large"
+        />
         <div className="relative h-96 from-blue-500 to-purple-600">
           {result.backdrop_path && (
             <Image

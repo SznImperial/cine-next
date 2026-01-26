@@ -43,9 +43,10 @@ export function People({ result }: { result: PopularPeople }) {
               {result.results.map((each) => (
                 <div key={each.id}>
                   <Poster
-                    href={`/people/${each.id}`}
-                    title={each.name}
-                    imageSrc={each.profile_path}
+                    data={{
+                      ...each,
+                      type: "people",
+                    }}
                   />
                 </div>
               ))}

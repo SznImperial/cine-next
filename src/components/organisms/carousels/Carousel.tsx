@@ -1,5 +1,5 @@
 import { Poster } from "@/components/molecules/Poster";
-import { isMovie, isPerson, isTV } from "@/libs/tmdb/utils";
+import { isMovie, isTV } from "@/libs/tmdb/utils";
 import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
 import Slider from "react-slick";
 import { Movie, Person, TV } from "tmdb-ts";
@@ -44,19 +44,27 @@ export function Carousel<T extends Movie | TV | Person>({
           {data.map((each) => (
             <div key={each.id}>
               <Poster
-                href={
+                data={
                   isMovie(each)
-                    ? `/movies/${each.id}`
+                    ? {
+                        type: "movie",
+                        id: each.id,
+                        title: each.title,
+                        poster_path: each.poster_path,
+                      }
                     : isTV(each)
-                      ? `/tvshows/${each.id}`
-                      : isPerson(each)
-                        ? `/people/${each.id}`
-                        : "#"
-                }
-                title={"title" in each ? each.title : each.name}
-                imageSrc={
-                  (each as Movie | TV).poster_path ??
-                  (each as Person).profile_path
+                      ? {
+                          type: "tvshow",
+                          id: each.id,
+                          name: each.name,
+                          poster_path: each.poster_path,
+                        }
+                      : {
+                          type: "people",
+                          id: each.id,
+                          name: each.name,
+                          profile_path: each.profile_path,
+                        }
                 }
               />
             </div>

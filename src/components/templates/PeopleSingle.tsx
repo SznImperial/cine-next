@@ -3,6 +3,7 @@
 import { Card } from "@heroui/react";
 import Image from "next/image";
 import { PersonDetails } from "tmdb-ts";
+import { FavoriteButtonAbsolute } from "../molecules/FavoriteButton";
 
 interface PeopleProps {
   result: PersonDetails;
@@ -12,6 +13,15 @@ export function PeopleSingle({ result }: PeopleProps) {
   return (
     <main>
       <Card className="mx-auto overflow-hidden">
+        <FavoriteButtonAbsolute
+          data={{
+            type: "people",
+            id: result.id,
+            profile_path: result.profile_path,
+            name: result.name,
+          }}
+          size="large"
+        />
         <div className="relative h-96 from-blue-500 to-purple-600">
           {result.profile_path && (
             <Image

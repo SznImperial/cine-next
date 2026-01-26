@@ -20,7 +20,8 @@
     "react-dom": "19.2.3",
     "react-slick": "^0.31.0",
     "slick-carousel": "^1.8.1",
-    "tmdb-ts": "^2.2.0"
+    "tmdb-ts": "^2.2.0",
+    "zustand": "^5.0.10"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

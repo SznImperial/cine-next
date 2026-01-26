@@ -67,9 +67,10 @@ export function Movies({
               {result.results.map((each) => (
                 <div key={each.id}>
                   <Poster
-                    href={`/movies/${each.id}`}
-                    title={each.title}
-                    imageSrc={each.poster_path}
+                    data={{
+                      ...each,
+                      type: "movie",
+                    }}
                   />
                 </div>
               ))}
