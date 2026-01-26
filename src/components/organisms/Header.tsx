@@ -10,6 +10,7 @@ import {
   Avatar,
   DropdownMenu,
   DropdownItem,
+  Button,
 } from "@heroui/react";
 import Image from "next/image";
 import logo from "../../assets/logo.webp";
@@ -34,19 +35,26 @@ export function Header() {
 
         <NavbarContent className="flex-1 px-4">
           <NavbarItem className="w-full">
-            <Input
-              classNames={{
-                base: "w-full",
-                mainWrapper: "w-full",
-                inputWrapper:
-                  "w-full h-full font-normal text-default-500 bg-default-500/20",
-                input: "text-small",
-              }}
-              placeholder="Search for a movie, tv show, person..."
-              size="md"
-              startContent={<SearchIcon size={18} />}
-              type="search"
-            />
+            <form action={"/search"} method="GET">
+              <Input
+                classNames={{
+                  base: "w-full",
+                  mainWrapper: "w-full",
+                  inputWrapper:
+                    "w-full h-full font-normal text-default-500 bg-default-500/20",
+                  input: "text-small",
+                }}
+                placeholder="Search for a movie, tv show, person..."
+                size="md"
+                type="search"
+                endContent={
+                  <button className="bg-primary p-1 rounded-sm text-white hover:bg-primary/50 active:bg-primary/20 cursor-pointer hover:scale-110">
+                    <SearchIcon size={18} />
+                  </button>
+                }
+                name="query"
+              />
+            </form>
           </NavbarItem>
         </NavbarContent>
 
