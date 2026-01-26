@@ -10,14 +10,20 @@ import {
   Avatar,
   DropdownMenu,
   DropdownItem,
-  Button,
+  cn,
 } from "@heroui/react";
 import Image from "next/image";
 import logo from "../../assets/logo.webp";
 import Link from "next/link";
 import { SearchIcon } from "../atoms/SearchIcon";
+import { usePathname } from "next/navigation";
 
 export function Header() {
+  const pathname = usePathname();
+  const isInPath = (
+    target: "/movies" | "/tvshows" | "/people" | "/favorites",
+  ) => pathname.endsWith(target);
+
   return (
     <header>
       <Navbar className="w-full bg-black/20">
@@ -95,21 +101,43 @@ export function Header() {
       <div className="flex gap-6 px-6 py-1.5 border-t border-default-200 justify-center border-b bg-black/40">
         <HeroLink
           href="/movies"
-          className="text-sm text-default-600 hover:text-primary"
+          className={cn(
+            "text-sm text-default-600 hover:text-primary",
+            isInPath("/movies") && "opacity-40",
+          )}
+          isDisabled={isInPath("/movies")}
         >
           Movies
         </HeroLink>
         <HeroLink
           href="/tvshows"
-          className="text-sm text-default-600 hover:text-primary"
+          className={cn(
+            "text-sm text-default-600 hover:text-primary",
+            isInPath("/tvshows") && "opacity-40",
+          )}
+          isDisabled={isInPath("/tvshows")}
         >
           TV Shows
         </HeroLink>
         <HeroLink
           href="/people"
-          className="text-sm text-default-600 hover:text-primary"
+          className={cn(
+            "text-sm text-default-600 hover:text-primary",
+            isInPath("/people") && "opacity-40",
+          )}
+          isDisabled={isInPath("/people")}
         >
           People
+        </HeroLink>
+        <HeroLink
+          href="/favorites"
+          className={cn(
+            "text-sm text-default-600 hover:text-primary",
+            isInPath("/favorites") && "opacity-40",
+          )}
+          isDisabled={isInPath("/favorites")}
+        >
+          Favorites
         </HeroLink>
       </div>
     </header>

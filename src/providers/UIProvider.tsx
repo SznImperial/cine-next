@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { GridBackground } from "@/components/molecules/GridBackground";
 import { Footer } from "@/components/organisms/Footer";

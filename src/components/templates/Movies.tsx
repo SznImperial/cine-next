@@ -56,8 +56,9 @@ export function Movies({
               <h2>
                 <span className="font-bold">Results:</span>
                 <span className="opacity-80 ml-2">
-                  {result.page * result.results.length} of{" "}
-                  {result.total_results}
+                  {result.results.length < 20
+                    ? `${result.total_results} of ${result.total_results}`
+                    : `${result.page * result.results.length} of ${result.total_results}`}
                 </span>
               </h2>
             </CardHeader>
