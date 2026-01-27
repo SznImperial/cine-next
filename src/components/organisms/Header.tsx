@@ -63,6 +63,7 @@ export function Header() {
 
       <div className="flex gap-6 px-6 py-1.5 border-t border-default-200 justify-center border-b bg-black/40">
         <HeroLink
+          as={Link}
           href="/movies"
           className={cn(
             "text-sm text-default-600 hover:text-primary",
@@ -73,6 +74,7 @@ export function Header() {
           Movies
         </HeroLink>
         <HeroLink
+          as={Link}
           href="/tvshows"
           className={cn(
             "text-sm text-default-600 hover:text-primary",
@@ -83,6 +85,7 @@ export function Header() {
           TV Shows
         </HeroLink>
         <HeroLink
+          as={Link}
           href="/people"
           className={cn(
             "text-sm text-default-600 hover:text-primary",
@@ -93,6 +96,7 @@ export function Header() {
           People
         </HeroLink>
         <HeroLink
+          as={Link}
           href="/favorites"
           className={cn(
             "text-sm text-default-600 hover:text-primary",
