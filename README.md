@@ -1,16 +1,6 @@
 # CineNext
 
-#### Video Demo: https://www.youtube.com/watch?v=JxpLkDQIdd8
-
-#### Description:
-
-## Short note
-
-I have decided to use Next.js because I have more experience with it than with other technologies. It works similarly to Flask in some ways (Server-Side Rendering). I was also inspired by the project involving the movies database we used in the course with SQLite.
-
 ## Overview (big picture)
-
-> Disclosure: This README was drafted with assistance from ChatGPT (AI). I reviewed and edited the content; the project code and implementation are my own work.
 
 **CineNext** is a compact, polished movie and TV discovery web application built as a CS50x project. It aggregates data from The Movie Database (TMDB) and exposes an experience similar to a streaming discovery portal: a large hero highlighting a currently trending item, horizontally scrollable carousels for curated sections, paginated lists for movies, TV shows and people, and a multi-type search that returns movies, TV shows and people in a single view.
 
