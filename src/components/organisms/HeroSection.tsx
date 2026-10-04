@@ -23,6 +23,23 @@ export function HeroSection({
         : data.poster_path,
   );
 
+  /*
+  Trending person results carry no `overview` (nor `biography`), so the only
+  useful description available is the list of titles they are known for.
+  Movies and TV shows both expose `overview`.
+  */
+  const description = (() => {
+    if (data.media_type !== "person") {
+      return data.overview;
+    }
+
+    const knownFor = data.known_for.map((each) =>
+      "title" in each ? each.title : each.name,
+    );
+
+    return knownFor.length ? `Known for ${knownFor.join(", ")}.` : "";
+  })();
+
   return (
     <>
       <Card
@@ -70,11 +87,11 @@ export function HeroSection({
             </h2>
           </div>
         </CardHeader>
-        <CardBody className="max-w-[550px] mt-4 max-[500px]:h-[150px]">
-          <p className="bg-black/50 p-3 rounded-2xl">
-            {data.media_type === "movie" ? data.overview : data.original_name}
-          </p>
-        </CardBody>
+        {description && (
+          <CardBody className="max-w-[550px] mt-4 max-[500px]:h-[150px]">
+            <p className="bg-black/50 p-3 rounded-2xl">{description}</p>
+          </CardBody>
+        )}
         <CardFooter>
           <div className="flex gap-4 max-w-[450px] h-full items-end">
             <Button
