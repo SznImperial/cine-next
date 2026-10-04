@@ -13,6 +13,7 @@ import { useSearchParams } from "next/navigation";
 import { PopularPeople } from "tmdb-ts";
 import { Poster } from "../molecules/Poster";
 import Link from "next/link";
+import { formatResultRange } from "@/libs/pagination";
 
 export function People({ result }: { result: PopularPeople }) {
   const searchParams = useSearchParams();
@@ -33,8 +34,10 @@ export function People({ result }: { result: PopularPeople }) {
               <h2>
                 <span className="font-bold">Results:</span>
                 <span className="opacity-80 ml-2">
-                  {result.page * result.results.length} of{" "}
-                  {result.total_results}
+                  {formatResultRange({
+                    page: result.page,
+                    totalResults: result.total_results,
+                  })}
                 </span>
               </h2>
             </CardHeader>

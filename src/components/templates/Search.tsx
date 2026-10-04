@@ -14,6 +14,7 @@ import { MultiSearchResult, Search as SearchType } from "tmdb-ts";
 import { Poster } from "../molecules/Poster";
 import Link from "next/link";
 import { isMovie, isPerson, isTV } from "@/libs/tmdb/utils";
+import { formatResultRange } from "@/libs/pagination";
 
 export function Search({
   result,
@@ -41,9 +42,10 @@ export function Search({
               <h2>
                 <span className="font-bold">Results:</span>
                 <span className="opacity-80 ml-2">
-                  {(result.page - 1) * 20 + 1}-
-                  {Math.min(result.page * 20, result.total_results)} of{" "}
-                  {result.total_results}
+                  {formatResultRange({
+                    page: result.page,
+                    totalResults: result.total_results,
+                  })}
                 </span>
               </h2>
             </CardHeader>
