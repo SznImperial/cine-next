@@ -13,7 +13,7 @@ import { useSearchParams } from "next/navigation";
 import { MultiSearchResult, Search as SearchType } from "tmdb-ts";
 import { Poster } from "../molecules/Poster";
 import Link from "next/link";
-import { isMovie, isPerson, isTV } from "@/libs/tmdb/utils";
+import { isMovie, isTV } from "@/libs/tmdb/utils";
 
 export function Search({
   result,
