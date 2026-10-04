@@ -40,12 +40,7 @@ export function Poster({
         ? `/people/${data.id}`
         : `/tvshows/${data.id}`;
 
-  const title =
-    data.type === "movie"
-      ? data.title
-      : data.type === "people"
-        ? data.name
-        : data.name;
+  const title = data.type === "movie" ? data.title : data.name;
 
   return (
     <Link
@@ -57,16 +52,18 @@ export function Poster({
         <Image
           title={title}
           src={imageUrl}
-          alt={"Movie Iamge"}
+          alt={title}
           loading="lazy"
           width={154}
-          height={138}
-          className="object-fill h-full rounded-lg border-2 border-white/30"
+          height={231}
+          className="object-cover h-full rounded-lg border-2 border-white/30"
         />
       ) : (
         <div
+          role="img"
+          aria-label={title}
           title={title}
-          className="w-[154px] h-[229px] bg-gray-400/40 object-fill h-full rounded-lg border-2 border-white/30 cursor-pointer transition-all hover:scale-98"
+          className="w-[154px] h-[229px] bg-gray-400/40 h-full rounded-lg border-2 border-white/30"
         />
       )}
       {children && <div>{children}</div>}
