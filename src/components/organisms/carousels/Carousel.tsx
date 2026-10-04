@@ -4,7 +4,7 @@ import { Card, CardBody, CardHeader, Divider } from "@heroui/react";
 import Slider from "react-slick";
 import { Movie, Person, TV } from "tmdb-ts";
 import homeBackground from "../../../assets/hero_background.webp";
-import { useWindowSize } from "@/hooks/useWindowSize";
+import { useSlidesToShow } from "@/hooks/useSlidesToShow";
 
 export function Carousel<T extends Movie | TV | Person>({
   title,
@@ -15,39 +15,7 @@ export function Carousel<T extends Movie | TV | Person>({
   data: T[];
   withBackground?: boolean;
 }) {
-  const width = useWindowSize();
-
-  const slidesToShow = (() => {
-    if (width > 1120) {
-      return 6;
-    }
-
-    if (width > 969) {
-      return 5;
-    }
-
-    if (width > 821) {
-      return 4;
-    }
-
-    if (width > 650) {
-      return 3;
-    }
-
-    if (width > 500) {
-      return 2;
-    }
-
-    if (width > 410) {
-      return 1.5;
-    }
-
-    if (width > 330) {
-      return 1;
-    }
-
-    return 0.75;
-  })();
+  const slidesToShow = useSlidesToShow();
 
   return (
     <Card
